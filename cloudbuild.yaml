@@ -80,7 +80,7 @@ steps:
   # Step 5: Create the Cloud Deploy Pipeline
   # ===============================================
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
-    id: 'Update ALM Unit Kind'
+    id: 'Deploy Pipeline'
     entrypoint: 'bash'
     args:
       - '-c'
