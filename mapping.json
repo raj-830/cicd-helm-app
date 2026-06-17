@@ -1,0 +1,46 @@
+[
+    {
+        "variable": "cluster_id",
+        "from": {
+            "dependency": "base_infra",
+            "outputVariable": "cluster_id"
+        }
+    },
+
+    {
+        "variable": "cluster_name",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "cluster_name"
+        }
+    },
+    {
+        "variable": "cluster_project_id",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "cluster_project_id"
+        }
+    },    
+    
+    {
+        "variable": "actuation_sa",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "actuation_sa"
+        }
+    },
+    {
+        "variable": "tenant_project_id",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "tenant_project_id"
+        }
+    },
+    {
+        "variable": "tenant_project_number",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "tenant_project_number"
+        }
+    }
+]

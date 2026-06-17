@@ -59,3 +59,12 @@ variable "set_inputs" {
   default     = "replicaCount:1"
 }
 
+variable "cluster_name" {
+  description = "cluster name"
+  type        = string
+}
+
+variable "cluster_project_id" {
+  description = "cluster project id"
+  type        = string
+}
