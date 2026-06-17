@@ -72,7 +72,7 @@ steps:
         gcloud beta app-lifecycle-manager unit-kinds update $_ALM_UK_NAME \
             --project="$_ALM_PROJECT_ID" \
             --location="$_ALM_LOCATION" \
-            --default-release="$_ALM_DEFAULT_RELEASE"
+            --default-release="$_ALM_DEFAULT_RELEASE" \
             --dependencies="alias=base_infra,unitKind=projects/$_ALM_PROJECT_ID/locations/$_ALM_LOCATION/unitKinds/$_ALM_DEPENDENT_UNIT_KIND" \
             --input-variable-mappings=mapping.json
 
@@ -97,11 +97,11 @@ substitutions:
   _IMAGE_NAME: 'cicd-helm-app1'
 
   # App-Lifecycle Manager Configuration
-  _ALM_RELEASE_NAME: 'cicd-helmapp-rls3'
+  _ALM_RELEASE_NAME: 'cicd-helmapp-rls4'
   _ALM_PROJECT_ID: 'saas-demo-496915'
   _ALM_LOCATION: 'us-central1'
   _ALM_UK_NAME: 'cicd-gke-app-uk1'
-  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls3'
+  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls4'
   _ALM_DEPENDENT_UNIT_KIND: 'cicd-gke-infra-uk1'
 
 options:
