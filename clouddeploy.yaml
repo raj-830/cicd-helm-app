@@ -42,7 +42,7 @@ tasks:
         # Create your ALM Rollout
         gcloud beta app-lifecycle-manager rollouts create cicd-helm-app-roll3 \
           --project="saas-demo-496915" \
-          --release=cicd-helmapp-rls8 \
+          --release=cicd-helmapp-rls9 \
           --location=us-central1 \
           --rollout-kind=cicd-helm-app-rollkind1
 
