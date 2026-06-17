@@ -1,50 +1,54 @@
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
- name: cicd-demo-pipeline1
+  name: cicd-demo-pipeline1
 spec:
-serialPipeline:
- stages:
- - targetId: dev-env1
+  # Fixed: serialPipeline must be nested under spec
+  serialPipeline:
+    # Fixed: stages must be nested under serialPipeline
+    stages:
+      - targetId: dev-env1
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: dev-env1
+  name: dev-env1
 customTarget:
- customTargetType: basic-custom-target
+  customTargetType: basic-custom-target
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: CustomTargetType
 metadata:
- name: basic-custom-target
+  name: basic-custom-target
 tasks:
- render:
-   type: 'container'
-   image: gcr.io/google.com/cloudsdktool/google-cloud-cli@sha256:484e8266c1cfc84b283bc6d4eec1f6b61223115178cce76fb59f77b223f26e8e
-   command: ['/bin/bash']
-   args:
-     - '-c'
-     - |-
-      echo "Sample manifest rendered content" > manifest.txt
-      gcloud storage cp manifest.txt $CLOUD_DEPLOY_OUTPUT_GCS_PATH/manifest.txt
-      echo {\"resultStatus\": \"SUCCEEDED\", \"manifestFile\": \"$CLOUD_DEPLOY_OUTPUT_GCS_PATH/manifest.txt\"} > results.json
-      gcloud storage cp results.json $CLOUD_DEPLOY_OUTPUT_GCS_PATH/results.json
- deploy:
-   type: 'container'
-   # 1. Switched to :latest to ensure the newest gcloud components are installed
-   image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
-   command: ['/bin/bash']
-   args:
-     - '-c'
-     - |-
-      gcloud beta app-lifecycle-manager rollouts create cicd-helm-app-roll1 \
-        --project="saas-demo-496915" \
-        --release=cicd-helm-app-rls1 \
-        --location=us-central1 \
-        --rollout-kind=cicd-helm-app-rk1
+  render:
+    type: 'container'
+    image: gcr.io/google.com/cloudsdktool/google-cloud-cli@sha256:484e8266c1cfc84b283bc6d4eec1f6b61223115178cce76fb59f77b223f26e8e
+    command: ['/bin/bash']
+    args:
+      - '-c'
+      - |-
+        echo "Sample manifest rendered content" > manifest.txt
+        gcloud storage cp manifest.txt $CLOUD_DEPLOY_OUTPUT_GCS_PATH/manifest.txt
+        echo {\"resultStatus\": \"SUCCEEDED\", \"manifestFile\": \"$CLOUD_DEPLOY_OUTPUT_GCS_PATH/manifest.txt\"} > results.json
+        gcloud storage cp results.json $CLOUD_DEPLOY_OUTPUT_GCS_PATH/results.json
+  deploy:
+    type: 'container'
+    image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+    command: ['/bin/bash']
+    args:
+      - '-c'
+      - |-
+        # Optimization: App-Lifecycle Manager is a beta component. 
+        # The base google-cloud-cli image requires installing it before use.
+        #gcloud components install beta --quiet
 
+        gcloud beta app-lifecycle-manager rollouts create cicd-helm-app-roll2 \
+          --project="saas-demo-496915" \
+          --release=cicd-helm-app-rls6 \
+          --location=us-central1 \
+          --rollout-kind=cicd-helm-app-rollkind1
 
-      # 3. Inform Cloud Deploy of success
-      echo {\"resultStatus\": \"SUCCEEDED\"} > results.json
-      gcloud storage cp results.json $CLOUD_DEPLOY_OUTPUT_GCS_PATH/results.json
+        # Inform Cloud Deploy of success
+        echo {\"resultStatus\": \"SUCCEEDED\"} > results.json
+        gcloud storage cp results.json $CLOUD_DEPLOY_OUTPUT_GCS_PATH/results.json
