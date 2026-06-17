@@ -74,6 +74,17 @@ steps:
             --location="$_ALM_LOCATION" \
             --default-release="$_ALM_DEFAULT_RELEASE"
 
+  # ===============================================
+  # Step 5: Create the Cloud Deploy Pipeline
+  # ===============================================
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    id: 'Update ALM Unit Kind'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # App-Lifecycle Manager commands are currently in beta component
+        gcloud deploy apply --file=clouddeploy.yaml --region=_REGION --project=_ARTIFACT_PROJECT_ID
 
 # Define your environment variables here
 substitutions:
