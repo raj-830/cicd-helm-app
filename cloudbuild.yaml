@@ -86,7 +86,7 @@ steps:
       - '-c'
       - |
         # App-Lifecycle Manager commands are currently in beta component
-        gcloud deploy apply --file=clouddeploy.yaml --region=_REGION --project=$_ARTIFACT_PROJECT_ID
+        gcloud deploy apply --file=clouddeploy.yaml --region=$_REGION --project=$_ARTIFACT_PROJECT_ID
 
 # Define your environment variables here
 substitutions:
@@ -97,11 +97,11 @@ substitutions:
   _IMAGE_NAME: 'cicd-helm-app1'
 
   # App-Lifecycle Manager Configuration
-  _ALM_RELEASE_NAME: 'cicd-helmapp-rls7'
+  _ALM_RELEASE_NAME: 'cicd-helmapp-rls8'
   _ALM_PROJECT_ID: 'saas-demo-496915'
   _ALM_LOCATION: 'us-central1'
   _ALM_UK_NAME: 'cicd-gke-app-uk1'
-  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls7'
+  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls8'
   _ALM_DEPENDENT_UNIT_KIND: 'cicd-gke-infra-uk1'
 
 options:
