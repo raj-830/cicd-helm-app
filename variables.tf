@@ -44,7 +44,7 @@ variable "cluster_id" {
 variable "helm_namespace" {
   description = "GKE name space"
   type        = string
-  default     = "vault1"
+  default     = "console1"
 }
 
 variable "chart" {
