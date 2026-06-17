@@ -2,10 +2,7 @@ apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: cicd-demo-pipeline1
-spec:
-  # Fixed: serialPipeline must be nested under spec
-  serialPipeline:
-    # Fixed: stages must be nested under serialPipeline
+serialPipeline:
     stages:
       - targetId: dev-env1
 ---
@@ -39,16 +36,16 @@ tasks:
     args:
       - '-c'
       - |-
-        # Optimization: App-Lifecycle Manager is a beta component. 
-        # The base google-cloud-cli image requires installing it before use.
+        # Install the beta component required for App-Lifecycle Manager
         #gcloud components install beta --quiet
 
+        # Create your ALM Rollout
         gcloud beta app-lifecycle-manager rollouts create cicd-helm-app-roll2 \
           --project="saas-demo-496915" \
-          --release=cicd-helm-app-rls6 \
+          --release=cicd-helmapp-rls6 \
           --location=us-central1 \
           --rollout-kind=cicd-helm-app-rollkind1
 
-        # Inform Cloud Deploy of success
+        # Signal success back to Cloud Deploy
         echo {\"resultStatus\": \"SUCCEEDED\"} > results.json
         gcloud storage cp results.json $CLOUD_DEPLOY_OUTPUT_GCS_PATH/results.json
