@@ -73,6 +73,8 @@ steps:
             --project="$_ALM_PROJECT_ID" \
             --location="$_ALM_LOCATION" \
             --default-release="$_ALM_DEFAULT_RELEASE"
+            --dependencies="alias=base_infra,unitKind=projects/$_ALM_PROJECT_ID/locations/$_ALM_LOCATION/unitKinds/$_ALM_DEPENDENT_UNIT_KIND" \
+            --input-variable-mappings=mapping.json
 
   # ===============================================
   # Step 5: Create the Cloud Deploy Pipeline
@@ -95,11 +97,12 @@ substitutions:
   _IMAGE_NAME: 'cicd-helm-app1'
 
   # App-Lifecycle Manager Configuration
-  _ALM_RELEASE_NAME: 'cicd-helm-app-rls1'
+  _ALM_RELEASE_NAME: 'cicd-helmapp-rls3'
   _ALM_PROJECT_ID: 'saas-demo-496915'
   _ALM_LOCATION: 'us-central1'
-  _ALM_UK_NAME: 'cicd-helm-app-uk1'
-  _ALM_DEFAULT_RELEASE: 'cicd-helm-app-rls1'
+  _ALM_UK_NAME: 'cicd-gke-app-uk1'
+  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls3'
+  _ALM_DEPENDENT_UNIT_KIND: 'cicd-gke-infra-uk1'
 
 options:
   logging: CLOUD_LOGGING_ONLY

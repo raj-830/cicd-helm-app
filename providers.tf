@@ -1,6 +1,7 @@
 
 data "google_container_cluster" "primary" {
-  name     = var.cluster_id
+  name     = reverse(split("/", var.cluster_id))[0]
+  #name     = var.cluster_id
   location = var.gcp_location
   project  = var.gcp_project_id
 }
