@@ -44,13 +44,13 @@ variable "cluster_id" {
 variable "helm_namespace" {
   description = "GKE name space"
   type        = string
-  default     = "console1"
+  default     = "rls-1"
 }
 
 variable "chart" {
   description = "Location of helm chart"
   type        = string
-  default = "vault"
+  default     = "vault"
 }
 
 variable "set_inputs" {
@@ -67,4 +67,15 @@ variable "cluster_name" {
 variable "cluster_project_id" {
   description = "cluster project id"
   type        = string
+}
+
+variable "cluster_master_cidr" {
+  description = "cluster Master IP Range"
+  type        = string
+}
+
+variable "node_service_account" {
+  description = "cluster node service account"
+  type        = string
+  default     = "infra-manager-sa@saas-demo-496915.iam.gserviceaccount.com"
 }

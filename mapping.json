@@ -21,7 +21,23 @@
             "inputVariable": "cluster_project_id"
         }
     },    
+
+    {
+        "variable": "cluster_master_cidr",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "cluster_master_cidr"
+        }
+    },    
     
+    {
+        "variable": "node_service_account",
+        "to": {
+            "dependency": "base_infra",
+            "inputVariable": "node_service_account"
+        }
+    },  
+
     {
         "variable": "actuation_sa",
         "to": {
