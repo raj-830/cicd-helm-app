@@ -20,7 +20,7 @@ variable "artifact_registry_repo_name" {
 variable "repository_link" {
   type        = string
   description = "HTTP repository link. Leaves empty to default to Google Artifact Registry."
-  default     = null #"https://helm.releases.hashicorp.com"
+  default     = "https://helm.github.io/examples" #"https://helm.releases.hashicorp.com"
 }
 
 
@@ -44,19 +44,19 @@ variable "cluster_id" {
 variable "helm_namespace" {
   description = "GKE name space"
   type        = string
-  default     = "rls-1"
+  default     = "hello"
 }
 
 variable "chart" {
   description = "Location of helm chart"
   type        = string
-  default     = "vault"
+  default     = "hello-world"
 }
 
 variable "set_inputs" {
   description = "List of set inputs (e.g. name1:val1,name2:value2)"
   type        = string
-  default     = "replicaCount:2"
+  default     = "replicaCount:1"
 }
 
 variable "cluster_name" {
