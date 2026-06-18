@@ -7,6 +7,7 @@ variable "gcp_project_id" {
 variable "helm_release_name" {
   description = "helm release name."
   type        = string
+  default = "hello"
   
 }
 
@@ -20,7 +21,7 @@ variable "artifact_registry_repo_name" {
 variable "repository_link" {
   type        = string
   description = "HTTP repository link. Leaves empty to default to Google Artifact Registry."
-  default     = "https://helm.github.io/examples" #"https://helm.releases.hashicorp.com"
+  default     = "https://helm.github.io/examples"
 }
 
 
