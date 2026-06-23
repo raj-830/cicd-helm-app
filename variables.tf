@@ -7,7 +7,7 @@ variable "gcp_project_id" {
 variable "helm_release_name" {
   description = "helm release name."
   type        = string
-  default = "hello"
+  default = "rls-hi"
   
 }
 
@@ -18,11 +18,11 @@ variable "artifact_registry_repo_name" {
 
 }
 
-variable "repository_link" {
-  type        = string
-  description = "HTTP repository link. Leaves empty to default to Google Artifact Registry."
-  default     = "https://helm.github.io/examples"
-}
+# variable "repository_link" {
+#   type        = string
+#   description = "HTTP repository link. Leaves empty to default to Google Artifact Registry."
+#   default     = "https://helm.github.io/examples"
+# }
 
 
 variable "gcp_region" {
@@ -48,16 +48,16 @@ variable "helm_namespace" {
   default     = "hello"
 }
 
-variable "chart" {
-  description = "Location of helm chart"
-  type        = string
-  default     = "hello-world"
-}
+# variable "chart" {
+#   description = "Location of helm chart"
+#   type        = string
+#   default     = "hello-world"
+# }
 
 variable "set_inputs" {
   description = "List of set inputs (e.g. name1:val1,name2:value2)"
   type        = string
-  default     = "replicaCount:2"
+  default     = "replicaCount:1"
 }
 
 variable "cluster_name" {
