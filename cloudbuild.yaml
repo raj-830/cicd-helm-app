@@ -94,15 +94,15 @@ substitutions:
   _REGION: 'us-central1'
   _ARTIFACT_PROJECT_ID: 'saas-demo-496915' # Target registry project
   _REPO_NAME: 'cicd-usecase'
-  _IMAGE_NAME: 'cicd-helm-app1'
+  _IMAGE_NAME: 'cicd-helm-app2'
   _IMAGE_TAG: 't-${SHORT_SHA}'
 
   # App-Lifecycle Manager Configuration
-  _ALM_RELEASE_NAME: 'cicd-helmapp-rls20'
+  _ALM_RELEASE_NAME: 'cicd-helmapp-rls21'
   _ALM_PROJECT_ID: 'saas-demo-496915'
   _ALM_LOCATION: 'us-central1'
   _ALM_UK_NAME: 'cicd-gke-app-uk1'
-  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls20'
+  _ALM_DEFAULT_RELEASE: 'cicd-helmapp-rls21'
   _ALM_DEPENDENT_UNIT_KIND: 'cicd-gke-infra-uk1'
 
 options:
