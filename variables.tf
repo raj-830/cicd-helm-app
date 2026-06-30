@@ -7,7 +7,7 @@ variable "gcp_project_id" {
 variable "helm_release_name" {
   description = "helm release name."
   type        = string
-  default = "rls-4"
+  default = "rls-5"
   
 }
 
@@ -59,7 +59,7 @@ variable "cluster_id" {
 variable "set_inputs" {
   description = "List of set inputs (e.g. name1:val1,name2:value2)"
   type        = string
-  default     = "replicaCount:1"
+  default     = "replicaCount:2"
 }
 
 variable "cluster_name" {
