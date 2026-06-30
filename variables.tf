@@ -7,14 +7,14 @@ variable "gcp_project_id" {
 variable "helm_release_name" {
   description = "helm release name."
   type        = string
-  default = "rls-3"
+  default = "rls-4"
   
 }
 
 variable "helm_namespace" {
   description = "GKE name space"
   type        = string
-  default     = "hi"
+  default     = "hi2"
 }
 
 
