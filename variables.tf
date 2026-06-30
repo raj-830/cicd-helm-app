@@ -14,7 +14,7 @@ variable "helm_release_name" {
 variable "helm_namespace" {
   description = "GKE name space"
   type        = string
-  default     = "hello"
+  default     = "hi"
 }
 
 
