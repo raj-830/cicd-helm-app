@@ -19,4 +19,4 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
 
-appText: "Today June 30"
+appText: "Hello World"
