@@ -31,7 +31,7 @@ steps:
 
         # 3. Build the image using Podman with annotations targeting the external project
         podman build . \
-          -t $_REGION-docker.pkg.dev/$_ARTIFACT_PROJECT_ID/$_REPO_NAME/$_IMAGE_NAME:latest \
+          -t $_REGION-docker.pkg.dev/$_ARTIFACT_PROJECT_ID/$_REPO_NAME/$_IMAGE_NAME:$_IMAGE_TAG \
           --annotation=com.easysaas.engine.type=im \
           --annotation=com.easysaas.engine.version=1.5.7 \
           --no-cache
@@ -40,7 +40,7 @@ steps:
         gcloud auth print-access-token | podman login -u oauth2accesstoken --password-stdin $_REGION-docker.pkg.dev
 
         # 5. Push both tags to the external project registry
-        podman push $_REGION-docker.pkg.dev/$_ARTIFACT_PROJECT_ID/$_REPO_NAME/$_IMAGE_NAME:latest
+        podman push $_REGION-docker.pkg.dev/$_ARTIFACT_PROJECT_ID/$_REPO_NAME/$_IMAGE_NAME:$_IMAGE_TAG
 
   # ==========================================
   # Step 3: Create App-Lifecycle Manager Release
@@ -56,7 +56,7 @@ steps:
             --project="$_ALM_PROJECT_ID" \
             --location="$_ALM_LOCATION" \
             --unit-kind="$_ALM_UK_NAME" \
-            --blueprint-package="$_REGION-docker.pkg.dev/$_ARTIFACT_PROJECT_ID/$_REPO_NAME/$_IMAGE_NAME:latest"
+            --blueprint-package="$_REGION-docker.pkg.dev/$_ARTIFACT_PROJECT_ID/$_REPO_NAME/$_IMAGE_NAME:$_IMAGE_TAG"
 
 
   # ===============================================
@@ -95,6 +95,7 @@ substitutions:
   _ARTIFACT_PROJECT_ID: 'saas-demo-496915' # Target registry project
   _REPO_NAME: 'cicd-usecase'
   _IMAGE_NAME: 'cicd-helm-app1'
+  _IMAGE_TAG: 't-${SHORT_SHA}'
 
   # App-Lifecycle Manager Configuration
   _ALM_RELEASE_NAME: 'cicd-helmapp-rls20'
