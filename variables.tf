@@ -7,7 +7,7 @@ variable "gcp_project_id" {
 variable "helm_release_name" {
   description = "helm release name."
   type        = string
-  default = "rls-1"
+  default = "rls-2"
   
 }
 
