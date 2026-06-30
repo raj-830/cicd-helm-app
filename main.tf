@@ -26,7 +26,7 @@ resource "helm_release" "main" {
   #repository_password = data.google_client_config.default.access_token
   chart = "${path.module}/simple-app" #var.chart 
   namespace =  kubernetes_namespace_v1.namespace.metadata[0].name
-  timeout   = 600
+  timeout   = 800
   replace   = true
 
   set = local.helm_sets
