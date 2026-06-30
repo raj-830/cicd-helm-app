@@ -7,9 +7,16 @@ variable "gcp_project_id" {
 variable "helm_release_name" {
   description = "helm release name."
   type        = string
-  default = "rls-hello"
+  default = "rls-1"
   
 }
+
+variable "helm_namespace" {
+  description = "GKE name space"
+  type        = string
+  default     = "hello"
+}
+
 
 variable "artifact_registry_repo_name" {
   description = "OCI Image Name."
@@ -42,11 +49,6 @@ variable "cluster_id" {
   type        = string
 }
 
-variable "helm_namespace" {
-  description = "GKE name space"
-  type        = string
-  default     = "hello"
-}
 
 # variable "chart" {
 #   description = "Location of helm chart"
