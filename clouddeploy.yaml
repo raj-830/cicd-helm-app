@@ -40,9 +40,9 @@ tasks:
         #gcloud components install beta --quiet
 
         # Create your ALM Rollout
-        gcloud beta app-lifecycle-manager rollouts create cicd-helm-app-roll15 \
+        gcloud beta app-lifecycle-manager rollouts create cicd-helm-app-roll16 \
           --project="saas-demo-496915" \
-          --release=cicd-helmapp-rls22 \
+          --release=cicd-helmapp-rls23 \
           --location=us-central1 \
           --rollout-kind=cicd-helm-app-rollkind1
 
